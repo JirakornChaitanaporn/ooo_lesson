@@ -7,6 +7,12 @@ class AccountDB:
             self.account_list.append(account)
         else:
             print("Account", account.accNum, "already exists")
+        
+    def delete_account(self, account):
+        if self.search_account_i(account.accNum) == -1:
+            self.account_list.remove(account)
+        else:
+            print("Account", account.accNum, "does not exists")
             
     def search_account_i(self, num):
         for i in range(len(self.account_list)):
@@ -14,12 +20,12 @@ class AccountDB:
                 return i
         return -1
     
-    def search_acc_obj(self, accNum):
+    def search_acc_obj(self, num):
         for account in self.account_list:
-            if accNum == account.accNum:
+            if num == account.accNum:
                 return account
-            else:
-                return None
+            
+        return None
     
     def __str__(self):
         s = ''
@@ -48,9 +54,9 @@ acc1 = Account("0000", "saving", "David Patterson", 1000)
 account_database.add_account(acc1)
 acc2 = Account("0001", "checking", "John Hennessy", 2000)
 account_database.add_account(acc2)
-acc3 = Account("0003", "saving", "Mark Hill", 3000)
+acc3 = Account("0002", "saving", "Mark Hill", 3000)
 account_database.add_account(acc3)
-acc4 = Account("0004", "saving", "David Wood", 4000)
+acc4 = Account("0003", "saving", "David Wood", 4000)
 account_database.add_account(acc4)
 acc5 = Account("0004", "saving", "David Wood", 4000)
 account_database.add_account(acc5)
@@ -62,7 +68,6 @@ account_database.search_acc_obj('0003').deposit(50)
 print(account_database.search_acc_obj('0003'))
 account_database.search_acc_obj('0003').withdraw( 25)
 print(account_database.search_acc_obj('0003'))
-# delete_account('0003')
-# show_account('0003')
-# deposit('0003', 50)
-# withdraw('0001', 6000)
+print(account_database.search_acc_obj('0003'))
+account_database.delete_account(account_database.search_acc_obj('0003'))
+print(account_database)
