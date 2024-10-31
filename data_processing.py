@@ -24,28 +24,65 @@ print(sum(temps)/len(temps))
 print()
 
 # Print all cities in Italy
-temps = []
+cities_temp = []
 my_country = 'Italy'
 for city in cities:
     if city['country'] == my_country:
-        temps.append(city['city'])
+        cities_temp.append(city['city'])
 print("All the cities in", my_country, ":")
-print(temps)
+print(cities_temp)
 print()
 
 # Print the average temperature for all the cities in Italy
 # Write code for me
+temps = []
+my_country = 'Italy'
+for city in cities:
+    if city['country'] == my_country:
+        temps.append(float(city['temperature']))
+print("The average temperature of all the cities in", my_country, ":")
+print(sum(temps)/len(temps))
+print()
 
 # Print the max temperature for all the cities in Italy
 # Write code for me
+temps = []
+my_country = 'Italy'
+for city in cities:
+    if city['country'] == my_country:
+        temps.append(float(city['temperature']))
+print("The max temperature of all the cities in", my_country, ":")
+print(max(temps))
+print()
+
+# Print the min temperature for all the cities in Italy
+# Write code for me
+temps = []
+my_country = 'Italy'
+for city in cities:
+    if city['country'] == my_country:
+        temps.append(float(city['temperature']))
+print("The min temperature of all the cities in", my_country, ":")
+print(min(temps))
+print()
 
 # Let's write a function to filter out only items that meet the condition
+# Hint: condition will be associated with an anonymous function, e.x., lamdbda x: max(x)
 def filter(condition, dict_list):
-    pass
+    filtered_list = []
+    for item in dict_list:
+        if condition(item):
+            filtered_list.append(item)
+    return filtered_list
+
+
 
 # Let's write a function to do aggregation given an aggregation function and an aggregation key
 def aggregate(aggregation_key, aggregation_function, dict_list):
-    pass
+    value_list = []
+    for _dict in dict_list:
+        value_list.append(_dict[aggregation_key])
+    return aggregation_function(value_list)
 
 # Let's write code to
 # - print the average temperature for all the cities in Italy
